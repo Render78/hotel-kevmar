@@ -66,6 +66,56 @@
 *     6.1 FontAwesome
 *     6.2 MDI
 **/
+
+/*
+*
+* STYLES
+*
+*/
+
+input {
+	display: none;
+}
+
+.tag {
+	font-size: 20px;
+	margin: 1.5em 0px;
+	padding: 5px 25px;
+	border-radius: 50px;
+	display: inline-block;
+	cursor: pointer;
+	background: #efefef;
+	text-decoration: none;
+	color: black;
+	border: 1px solid #ccc;
+}
+
+.gallery-img {
+	max-width: 300px;
+	width: 700px;
+	height: 200px;
+	transition: all .4s ease-in-out;
+	margin: 4px;
+	border-radius: 8px;
+}
+
+/*filter CSS */
+
+#spaces:checked~.images>img:not([class*='spaces']),
+#rooms:checked~.images>img:not([class*='rooms']),
+#abroad:checked~.images>img:not([class*='abroad']) {
+	width: 0px;
+	height: 0px;
+}
+
+#all:checked~.all,
+#spaces:checked~.tag1,
+#rooms:checked~.tag2,
+#abroad:checked~.tag3 {
+	background-color: #333333;
+	color: white;
+}
+
 /*
 *
 * Main Styles

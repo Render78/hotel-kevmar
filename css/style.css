@@ -94,47 +94,72 @@ input {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 12px;
-	justify-content: baseline;
+	justify-content: flex-start;
 	align-items: flex-start;
+	position: relative;
+}
+
+.gallery-item {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	max-width: 400px;
 }
 
 .gallery-img {
 	width: 100%;
-	max-width: 400px;
 	height: 250px;
 	object-fit: cover;
 	border-radius: 8px;
 	transition: all 0.3s ease-out;
 	opacity: 1;
-	position: relative;
-	top: 0;
+	display: block;
 }
 
 .gallery-img:hover {
-	top: -10px;
+	transform: translateY(-10px);
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 }
 
-/*filter CSS */
+.img-tooltip {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+}
 
-#spaces:checked~.images>img:not(.spaces),
-#rooms:checked~.images>img:not(.rooms),
-#abroad:checked~.images>img:not(.abroad) {
+.gallery-item:hover .img-tooltip {
+	opacity: 1;
+}
+
+#spaces:checked~.images .gallery-item:not(.spaces),
+#rooms:checked~.images .gallery-item:not(.rooms),
+#abroad:checked~.images .gallery-item:not(.abroad) {
 	opacity: 0;
 	transform: scale(0.8);
 	visibility: hidden;
 	position: absolute;
+	pointer-events: none;
 }
 
-#all:checked~.images>img,
-#spaces:checked~.images>img.spaces,
-#rooms:checked~.images>img.rooms,
-#abroad:checked~.images>img.abroad {
+#all:checked~.images .gallery-item,
+#spaces:checked~.images .gallery-item.spaces,
+#rooms:checked~.images .gallery-item.rooms,
+#abroad:checked~.images .gallery-item.abroad {
 	opacity: 1;
 	transform: scale(1);
 	visibility: visible;
 	position: relative;
+	pointer-events: auto;
 }
 
 #all:checked~.all,
@@ -144,6 +169,7 @@ input {
 	background-color: #333333;
 	color: white;
 }
+
 
 /*
 *

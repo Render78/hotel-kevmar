@@ -90,22 +90,53 @@ input {
 	border: 1px solid #ccc;
 }
 
+.images {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: baseline;
+	align-items: flex-start;
+}
+
 .gallery-img {
-	max-width: 300px;
-	width: 700px;
-	height: 200px;
-	transition: all .4s ease-in-out;
-	margin: 4px;
+	width: 100%;
+	max-width: 400px;
+	height: 250px;
+	object-fit: cover;
 	border-radius: 8px;
+	transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+	opacity: 1;
+	transform: scale(1);
+	visibility: visible;
+	position: relative;
+}
+
+.gallery-img:hover {
+	transform: scale3d(1.05, 1.05, 1.05);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+	transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+	cursor: pointer;
 }
 
 /*filter CSS */
 
-#spaces:checked~.images>img:not([class*='spaces']),
-#rooms:checked~.images>img:not([class*='rooms']),
-#abroad:checked~.images>img:not([class*='abroad']) {
-	width: 0px;
-	height: 0px;
+#spaces:checked~.images>img:not(.spaces),
+#rooms:checked~.images>img:not(.rooms),
+#abroad:checked~.images>img:not(.abroad) {
+	opacity: 0;
+	transform: scale(0.8);
+	visibility: hidden;
+	position: absolute;
+}
+
+#all:checked~.images>img,
+#spaces:checked~.images>img.spaces,
+#rooms:checked~.images>img.rooms,
+#abroad:checked~.images>img.abroad {
+	opacity: 1;
+	transform: scale(1);
+	visibility: visible;
+	position: relative;
 }
 
 #all:checked~.all,

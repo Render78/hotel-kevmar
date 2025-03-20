@@ -104,17 +104,15 @@ input {
 	height: 250px;
 	object-fit: cover;
 	border-radius: 8px;
-	transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+	transition: all 0.3s ease-out;
 	opacity: 1;
-	transform: scale(1);
-	visibility: visible;
 	position: relative;
+	top: 0;
 }
 
 .gallery-img:hover {
-	transform: scale3d(1.05, 1.05, 1.05);
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-	transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+	top: -10px;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 }
 
